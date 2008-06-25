@@ -25,6 +25,4 @@ sub execute {
     return "--- bucket set to '" . $self->get_bucket_name . "' ---";
 }
 
-__PACKAGE__->meta->make_immutable;
-
 1;
