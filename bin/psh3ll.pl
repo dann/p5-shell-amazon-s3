@@ -13,7 +13,7 @@ use FindBin::libs;
 use Shell::Amazon::S3;
 
 my $shell = Shell::Amazon::S3->new;
-$shell->load_plugins($_) for qw//;
+$shell->load_plugins($_) for qw(ReadLineHistory Completion);
 $shell->run;
 
 __END__
