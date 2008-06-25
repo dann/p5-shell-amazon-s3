@@ -28,7 +28,9 @@ class_has 'api_' => (
 # template method
 sub do_execute {
     my ( $self, $tokens ) = @_;
-    $self->validate_tokens($tokens);
+    my ($is_success, $message) = $self->validate_tokens($tokens);
+    return $message unless $is_success;
+
     my $args = $self->parse_tokens($tokens);
     $self->execute($args);
 }

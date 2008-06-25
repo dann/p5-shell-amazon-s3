@@ -6,10 +6,10 @@ extends 'Shell::Amazon::S3::Command';
 override 'validate_tokens' , sub {
     my ($self, $tokens) = @_;
     # TODO
-    if ( !@{$tokens} == 1 ) {
-        return "error: bucket [bucketname]";
+    if ( @{$tokens} != 1 ) {
+        return (0, "error: bucket [bucketname]");
     }
- 
+    return (1, "");
 };
 
 sub parse_tokens {

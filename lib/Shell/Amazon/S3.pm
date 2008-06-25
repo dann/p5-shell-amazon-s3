@@ -62,13 +62,13 @@ sub read {
 
 sub eval {
     my ( $self,    $line ) = @_;
-    my ( $command, $args ) = $self->compile($line);
+    my ( $command, $args ) = $self->parse_input($line);
     return unless defined($command);
     my @ret = $self->execute( $command, $args );
     return @ret;
 }
 
-sub compile {
+sub parse_input {
     my ( $self, $line ) = @_;
     my @tokens = split( /\s/, $line );
     return unless @tokens >= 1;
