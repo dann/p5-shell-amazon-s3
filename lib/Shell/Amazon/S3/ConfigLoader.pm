@@ -22,7 +22,7 @@ sub load {
 sub save {
     my ( $self, $conf ) = @_;
     YAML::DumpFile( $self->conf, $conf );
-    chmod 0600, $self->conf;
+    chmod 600, $self->conf;
 }
 
 __PACKAGE__->meta->make_immutable;
