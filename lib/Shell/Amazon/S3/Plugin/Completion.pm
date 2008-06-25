@@ -1,4 +1,5 @@
 package Shell::Amazon::S3::Plugin::Completion;
+use strict;
 use Shell::Amazon::S3::Plugin;
 use Scalar::Util 'weaken';
 use namespace::clean -except => ['meta'];

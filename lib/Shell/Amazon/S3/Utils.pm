@@ -1,4 +1,6 @@
 package Shell::Amazon::S3::Utils;
+use strict;
+use warnings;
 
 sub classsuffix {
     my ( $class, $class_name ) = @_;
