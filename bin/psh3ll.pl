@@ -10,7 +10,6 @@ It is built upon the Amazon S3 REST perl library.
 =cut
 
 use FindBin::libs;
-
 use Shell::Amazon::S3;
 
 my $shell = Shell::Amazon::S3->new;

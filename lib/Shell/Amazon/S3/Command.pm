@@ -4,11 +4,6 @@ use MooseX::ClassAttribute;
 use Net::Amazon::S3;
 use Shell::Amazon::S3::ConfigLoader;
 
-class_has 'bucket_name_' => (
-    is  => 'rw',
-    isa => 'Str',
-);
-
 class_has 'api_' => (
     is       => 'rw',
     required => 1,
@@ -25,19 +20,33 @@ class_has 'api_' => (
     }
 );
 
+class_has 'bucket_name_' => (
+    is  => 'rw',
+    isa => 'Str',
+);
+
 # template method
 sub do_execute {
-    my ( $self, $tokens ) = @_;
-    my ($is_success, $message) = $self->validate_tokens($tokens);
-    return $message unless $is_success;
+    my ( $self,             $tokens )  = @_;
+    my ( $is_check_success, $message ) = $self->check_pre_condition;
+    return $message unless $is_check_success;
+
+    my ( $is_validation_success, $validation_status_message )
+        = $self->validate_tokens($tokens);
+    return $validation_status_message unless $is_validation_success;
 
     my $args = $self->parse_tokens($tokens);
-    $self->execute($args);
+    return $self->execute($args);
+}
+
+sub check_pre_condition {
+    my ( $self, $tokens ) = @_;
+    return (1, "");
 }
 
 sub validate_tokens {
     my ( $self, $tokens ) = @_;
-    die 'virtual method';
+    return (1, "");
 }
 
 sub parse_tokens {
@@ -55,12 +64,12 @@ sub get_bucket_name {
 }
 
 sub api {
-    Shell::Amazon::S3::Command->api;
+    Shell::Amazon::S3::Command->api_;
 }
 
 sub bucket {
     my ($self) = shift;
-    my $bucket = __PACKAGE__->api_->bucket( $self->get_bucket_name );
+    my $bucket = $self->api->bucket( $self->get_bucket_name );
     $bucket;
 }
 

@@ -3,6 +3,7 @@ use Term::ReadLine;
 use Moose;
 use namespace::clean -except => ['meta'];
 use Shell::Amazon::S3::CommandDispatcher;
+use Perl6::Say;
 use Data::Dumper;
 
 our $VERSION = '0.01';
@@ -36,6 +37,7 @@ has 'dispatcher' => (
 
 sub run {
     my ($self) = @_;
+    $self->_show_banner;
     while ( $self->run_once ) {
 
         # keep looping
@@ -46,8 +48,8 @@ sub run_once {
     my ($self) = @_;
     my $line = $self->read;
     return unless defined($line);    # undefined value == EOF
-    my @ret = $self->eval($line);
-    eval { $self->print(@ret); };
+    my $result = $self->eval($line);
+    eval { $self->print($result); };
     if ($@) {
         my $error = $@;
         eval { $self->print("Error printing! - $error\n"); };
@@ -64,8 +66,9 @@ sub eval {
     my ( $self,    $line ) = @_;
     my ( $command, $args ) = $self->parse_input($line);
     return unless defined($command);
-    my @ret = $self->execute( $command, $args );
-    return @ret;
+    my $result = $self->execute( $command, $args );
+    exit if $result eq 'EXIT';
+    return $result;
 }
 
 sub parse_input {
@@ -94,6 +97,12 @@ sub print {
     no warnings 'uninitialized';
     print $fh "$result";
     print $fh "\n" if $self->term->ReadLine =~ /Gnu/;
+}
+
+sub _show_banner {
+    say "Welcome to pSh3ll (Amazon S3 command shell for Perl) (c) 2008 Dann.";
+    say "Type 'help' for command list.";
+    say ;
 }
 
 1;
