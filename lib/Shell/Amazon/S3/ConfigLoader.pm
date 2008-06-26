@@ -4,7 +4,7 @@ use Moose;
 use YAML;
 use File::HomeDir;
 use Path::Class qw(file);
-use ExtUtils::MakeMaker;
+use ExtUtils::MakeMaker ();
 
 has conf => (
     is      => 'ro',
