@@ -9,9 +9,6 @@ requires $_
     File::Slurp
     FindBin::libs
     Module::Find
-    Moose
-    Moose::Role
-    MooseX::ClassAttribute
     Net::Amazon::S3
     Path::Class
     Perl6::Say
@@ -20,7 +17,10 @@ requires $_
     Term::ReadLine
     YAML
     namespace::clean
+    Moose
+    Moose::Role
     MooseX::ClassAttribute
+    MooseX::Singleton
     /
     );
 
