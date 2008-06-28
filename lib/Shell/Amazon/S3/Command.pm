@@ -8,15 +8,7 @@ class_has 'api_' => (
     is       => 'rw',
     required => 1,
     default  => sub {
-        my $config_loader = Shell::Amazon::S3::ConfigLoader->new;
-        my $config        = $config_loader->load;
-        my $api           = Net::Amazon::S3->new(
-            {   aws_access_key_id     => $config->{aws_access_key_id},
-                aws_secret_access_key => $config->{aws_secret_access_key},
-            }
-        );
-        $api;
-
+        shift->setup_api;
     }
 );
 
@@ -41,12 +33,12 @@ sub do_execute {
 
 sub check_pre_condition {
     my ( $self, $tokens ) = @_;
-    return (1, "");
+    return ( 1, "" );
 }
 
 sub validate_tokens {
     my ( $self, $tokens ) = @_;
-    return (1, "");
+    return ( 1, "" );
 }
 
 sub parse_tokens {
@@ -71,6 +63,18 @@ sub bucket {
     my ($self) = shift;
     my $bucket = $self->api->bucket( $self->get_bucket_name );
     $bucket;
+}
+
+sub setup_api {
+    my $self          = shift;
+    my $config_loader = Shell::Amazon::S3::ConfigLoader->instance;
+    my $config        = $config_loader->load;
+    my $api           = Net::Amazon::S3->new(
+        {   aws_access_key_id     => $config->{aws_access_key_id},
+            aws_secret_access_key => $config->{aws_secret_access_key},
+        }
+    );
+    $api;
 }
 
 __PACKAGE__->meta->make_immutable;

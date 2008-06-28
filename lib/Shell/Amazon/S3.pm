@@ -3,6 +3,7 @@ use Term::ReadLine;
 use Moose;
 use namespace::clean -except => ['meta'];
 use Shell::Amazon::S3::CommandDispatcher;
+use Shell::Amazon::S3::ConfigLoader;
 use Perl6::Say;
 use Data::Dumper;
 
@@ -37,11 +38,23 @@ has 'dispatcher' => (
 
 sub run {
     my ($self) = @_;
-    $self->_show_banner;
+    $self->show_banner;
+    $self->setup;
     while ( $self->run_once ) {
 
         # keep looping
     }
+}
+
+sub setup {
+    my ($self) = @_;
+    $self->setup_config;
+}
+
+sub setup_config {
+    my ($self) = @_;
+    my $config_loader = Shell::Amazon::S3::ConfigLoader->instance;
+    $config_loader->load;
 }
 
 sub run_once {
@@ -99,7 +112,7 @@ sub print {
     print $fh "\n" if $self->term->ReadLine =~ /Gnu/;
 }
 
-sub _show_banner {
+sub show_banner {
     say "Welcome to pSh3ll (Amazon S3 command shell for Perl) (c) 2008 Dann.";
     say "Type 'help' for command list.";
     say ;
