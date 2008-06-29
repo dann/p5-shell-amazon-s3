@@ -1,4 +1,6 @@
 Revision history for Perl extension Shell::Amazon::S3
 
+0.02 Tue Jun 24 20:59:06 2008
+        * shipit test
 0.01 Tue Jun 24 20:59:06 2008
 	* original version
