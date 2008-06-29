@@ -7,7 +7,7 @@ use Shell::Amazon::S3::ConfigLoader;
 use Perl6::Say;
 use Data::Dumper;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 with 'MooseX::Object::Pluggable';
 
