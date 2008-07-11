@@ -4,6 +4,10 @@ use Path::Class qw(file);
 
 extends 'Shell::Amazon::S3::CommandWithBucket';
 
+has '+desc' => ( default =>
+        "putfilewacl <id> <file> ['private'|'public-read'|'public-read-write'|'authenticated-read']"
+);
+
 override 'validate_tokens', sub {
     my ( $self, $tokens ) = @_;
     if ( !@{$tokens} == 3 ) {

@@ -3,6 +3,7 @@ package Shell::Amazon::S3::Plugin::ReadLineHistory;
 use Moose::Role;
 use File::Slurp;
 use Path::Class;
+use File::HomeDir;
 
 around 'run' => sub {
     my $orig = shift;

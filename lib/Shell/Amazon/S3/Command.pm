@@ -17,6 +17,12 @@ class_has 'bucket_name_' => (
     isa => 'Str',
 );
 
+has 'desc' => (
+    is      => 'rw',
+    isa     => 'Str',
+    default => 'No description',
+);
+
 # template method
 sub do_execute {
     my ( $self,             $tokens )  = @_;

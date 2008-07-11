@@ -3,6 +3,8 @@ use Moose;
 
 extends 'Shell::Amazon::S3::CommandWithBucket';
 
+has '+desc' => (default => 'createbucket');
+
 sub execute {
     my ($self, $args) = @_;
     my $bucket_name = $self->get_bucket_name;

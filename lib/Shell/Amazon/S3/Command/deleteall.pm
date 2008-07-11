@@ -3,6 +3,8 @@ use Moose;
 
 extends 'Shell::Amazon::S3::CommandWithBucket';
 
+has '+desc' => ( default => 'deleteall [prefix]');
+
 sub execute {
     my ( $self, $args ) = @_;
     my $bucket = $self->bucket;

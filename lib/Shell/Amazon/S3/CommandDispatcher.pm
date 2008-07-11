@@ -9,6 +9,7 @@ has 'dispatch_table' => (
     required => 1,
     default  => sub {
         my @commands = usesub Shell::Amazon::S3::Command;
+        #require $_ for @commands;
         my %table
             = map { Shell::Amazon::S3::Utils->classsuffix($_) => $_->new }
             @commands;

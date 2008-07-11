@@ -3,6 +3,8 @@ use Moose;
 
 extends 'Shell::Amazon::S3::CommandWithBucket';
 
+has '+desc' => ( default => 'delete <id>' );
+
 override 'validate_tokens', sub {
     my ( $self, $tokens ) = @_;
     if ( !@{$tokens} == 1 ) {
