@@ -4,6 +4,10 @@ use Perl6::Say;
 
 extends 'Shell::Amazon::S3::Command';
 
+has '+desc' => ( default =>
+        "setacl ['bucket'|'item'] <id> ['private'|'public-read'|'public-read-write'|'authenticated-read']"
+);
+
 override 'validate_tokens', sub {
     my ( $self, $tokens ) = @_;
     if ( !@{$tokens} == 3 ) {

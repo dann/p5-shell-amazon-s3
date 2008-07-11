@@ -38,31 +38,23 @@ sub get_command_summary {
     sprintf("%20s -- $desc", Shell::Amazon::S3::Utils->classsuffix(ref $command));
 }
 
-# FIXME: MOVE TO
+# FIXME: MOVE TO help doc to each command
 sub execute2 {
     my ( $self, $args ) = @_;
 
     my $result = '';
-    $result .= "\n";
-    $result .= "exit\n";
     $result .= "get <id>\n";
     $result .= "getacl ['bucket'|'item'] <id>\n";
-    $result .= "getfile <id> <file>\n";
     $result .= "gettorrent <id>\n";
     $result .= "head ['bucket'|'item'] <id>\n";
     $result .= "host [hostname]\n";
     $result .= "list [prefix] [max]\n";
     $result .= "listatom [prefix] [max]\n";
     $result .= "listrss [prefix] [max]\n";
-    $result .= "listbuckets\n";
     $result .= "pass [password]\n";
     $result .= "put <id> <data>\n";
-    $result .= "putfile <id> <file>\n";
-    $result
-        .= "\n";
+# putfile <id> <file>
     $result .= "quit\n";
-    $result
-        .= "setacl ['bucket'|'item'] <id> ['private'|'public-read'|'public-read-write'|'authenticated-read']\n";
     $result .= "user [username]\n";
 
     return $result;
