@@ -7,7 +7,6 @@ requires $_
     qw/
     File::HomeDir
     File::Slurp
-    FindBin::libs
     Module::Find
     Net::Amazon::S3
     Path::Class
@@ -27,4 +26,5 @@ requires $_
 build_requires 'Test::More';
 use_test_base;
 auto_include;
+install_script 'script/psh3ll.pl';
 WriteAll;

@@ -5,7 +5,6 @@ use namespace::clean -except => ['meta'];
 use Shell::Amazon::S3::CommandDispatcher;
 use Shell::Amazon::S3::ConfigLoader;
 use Perl6::Say;
-use Data::Dumper;
 
 our $VERSION = '0.03';
 
@@ -132,11 +131,11 @@ Shell::Amazon::S3 - Shell for Amazon S3
 
 =head1 DESCRIPTION
 
-Shell::Amazon::S3 is 
+Shell::Amazon::S3 is Shell for Amazon S3 
 
 =head1 AUTHOR
 
-dann E<lt>techmemo@gmail.comE<gt>
+Takatoshi KitanoE<lt>kitano.t@gmail.comE<gt>
 
 =head1 SEE ALSO
 

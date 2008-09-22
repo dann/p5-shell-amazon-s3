@@ -9,7 +9,6 @@ It is built upon the Amazon S3 REST perl library.
  
 =cut
 
-use FindBin::libs;
 use Shell::Amazon::S3;
 
 my $shell = Shell::Amazon::S3->new;
@@ -52,7 +51,7 @@ psh3ll.pl - Amazon S3 command shell for Perl
  
 =head1 AUTHOR
  
-Dann E<lt>techmemo (at) gmail.comE<gt>
+Takatoshi Kitano E<lt>kitano.tk (at) gmail.comE<gt>
  
 =head1 LICENSE
  

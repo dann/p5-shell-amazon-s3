@@ -5,7 +5,7 @@ author:
 build_requires:
   Test::More: 0
 distribution_type: module
-generated_by: 'Module::Install version 0.72'
+generated_by: 'Module::Install version 0.720'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.3.html
@@ -18,7 +18,6 @@ no_index:
 requires:
   File::HomeDir: 0
   File::Slurp: 0
-  FindBin::libs: 0
   Module::Find: 0
   Moose: 0
   Moose::Role: 0

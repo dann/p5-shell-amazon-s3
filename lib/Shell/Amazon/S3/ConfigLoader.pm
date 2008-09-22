@@ -8,7 +8,7 @@ use MooseX::Singleton;
 has 'changed' => (
     is      => 'rw',
     isa     => 'Int',
-    default => 0,
+    default => sub {0},
 );
 
 has 'conf' => (
@@ -23,6 +23,8 @@ sub prompt {
     return $value;
 }
 
+# TODO: More testable
+# we need to inject access key and secret access key outsied 
 sub load {
     my $self = shift;
     my $config = eval { YAML::LoadFile( $self->conf ) } || {};
@@ -34,7 +36,7 @@ sub load {
 }
 
 sub update {
-    my ($self, $key, $value) = @_;
+    my ( $self, $key, $value ) = @_;
     my $config = eval { YAML::LoadFile( $self->conf ) } || {};
     $config->{$key} = $value;
     $self->changed( $self->changed + 1 );
@@ -43,7 +45,7 @@ sub update {
 
 sub save {
     my ( $self, $conf ) = @_;
-    if($self->changed) {
+    if ( $self->changed ) {
         YAML::DumpFile( $self->conf, $conf );
         chmod 0600, $self->conf;
     }
