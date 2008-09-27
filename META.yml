@@ -1,7 +1,7 @@
 ---
 abstract: 'Shell for Amazon S3'
 author:
-  - 'dann <techmemo@gmail.com>'
+  - 'Takatoshi Kitano<kitano.t@gmail.com>'
 build_requires:
   Test::More: 0
 distribution_type: module
@@ -31,4 +31,4 @@ requires:
   Term::ReadLine: 0
   YAML: 0
   namespace::clean: 0
-version: 0.03
+version: 0.01
