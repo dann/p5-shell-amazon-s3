@@ -20,6 +20,7 @@ requires $_
     Moose::Role
     MooseX::ClassAttribute
     MooseX::Singleton
+    MooseX::Object::Pluggable
     /
     );
 

@@ -22,6 +22,7 @@ requires:
   Moose: 0
   Moose::Role: 0
   MooseX::ClassAttribute: 0
+  MooseX::Object::Pluggable: 0
   MooseX::Singleton: 0
   Net::Amazon::S3: 0
   Path::Class: 0
@@ -31,4 +32,4 @@ requires:
   Term::ReadLine: 0
   YAML: 0
   namespace::clean: 0
-version: 0.01
+version: 0.02
