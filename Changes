@@ -1,5 +1,8 @@
 Revision history for Perl extension Shell::Amazon::S3
 
+0.04_01 Tue Jun 29 21:50:03 2008
+	* Made developer release to change API
+
 0.04 Tue Jun 24 19:33:06 2008
 	* added MooseX::Object::Pluggable as dependency
 

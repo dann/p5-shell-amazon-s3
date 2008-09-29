@@ -6,7 +6,7 @@ use Shell::Amazon::S3::CommandDispatcher;
 use Shell::Amazon::S3::ConfigLoader;
 use Perl6::Say;
 
-our $VERSION = '0.04';
+our $VERSION = '0.04_01';
 
 with 'MooseX::Object::Pluggable';
 

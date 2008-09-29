@@ -32,4 +32,4 @@ requires:
   Term::ReadLine: 0
   YAML: 0
   namespace::clean: 0
-version: 0.04
+version: 0.04_01
