@@ -6,9 +6,8 @@ use Shell::Amazon::S3::ConfigLoader;
 
 class_has 'api_' => (
     is       => 'rw',
-    required => 1,
     default  => sub {
-        shift->setup_api;
+        Shell::Amazon::S3::Command->setup_api;
     }
 );
 
@@ -73,7 +72,7 @@ sub bucket {
 
 sub setup_api {
     my $self          = shift;
-    my $config_loader = Shell::Amazon::S3::ConfigLoader->instance;
+    my $config_loader = Shell::Amazon::S3::ConfigLoader->new;
     my $config        = $config_loader->load;
     my $api           = Net::Amazon::S3->new(
         {   aws_access_key_id     => $config->{aws_access_key_id},

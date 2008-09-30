@@ -16,10 +16,11 @@ requires $_
     Term::ReadLine
     YAML
     namespace::clean
+    Class::MOP
     Moose
     Moose::Role
     MooseX::ClassAttribute
-    MooseX::Singleton
+    Module::Pluggable::Object
     MooseX::Object::Pluggable
     /
     );

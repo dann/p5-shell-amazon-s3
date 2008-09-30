@@ -23,6 +23,12 @@ __END__
 psh3ll.pl - Amazon S3 command shell for Perl
  
 =head1 SYNOPSIS
+
+You need to setup aws key and secret key after run pSh3ll.pl.
+These configuration is stored in ~/.psh3ll.
+
+After configuring AWS settings, you can use psh3ll.
+you can use commands with psh3ll.The commands are listed as below:
  
   bucket [bucketname]
   count [prefix]

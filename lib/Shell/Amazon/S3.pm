@@ -6,7 +6,7 @@ use Shell::Amazon::S3::CommandDispatcher;
 use Shell::Amazon::S3::ConfigLoader;
 use Perl6::Say;
 
-our $VERSION = '0.04_01';
+our $VERSION = '0.04_02';
 
 with 'MooseX::Object::Pluggable';
 
@@ -52,7 +52,7 @@ sub setup {
 
 sub setup_config {
     my ($self) = @_;
-    my $config_loader = Shell::Amazon::S3::ConfigLoader->instance;
+    my $config_loader = Shell::Amazon::S3::ConfigLoader->new;
     $config_loader->load;
 }
 
@@ -112,7 +112,7 @@ sub print {
 }
 
 sub show_banner {
-    say "Welcome to pSh3ll (Amazon S3 command shell for Perl) (c) 2008 Dann.";
+    say "Welcome to pSh3ll (Amazon S3 command shell for Perl) (c) 2008 Takatoshi Kitano.";
     say "Type 'help' for command list.";
     say ;
 }
@@ -128,6 +128,14 @@ Shell::Amazon::S3 - Shell for Amazon S3
 =head1 SYNOPSIS
 
   use Shell::Amazon::S3;
+
+  my $shell = Shell::Amazon::S3->new;
+  $shell->load_plugins($_) for qw(ReadLineHistory Completion);
+  $shell->run;
+
+Alternatively, use the 'psh3ll.pl' script installed with the distribution
+
+  system$ psh3ll.pl
 
 =head1 DESCRIPTION
 

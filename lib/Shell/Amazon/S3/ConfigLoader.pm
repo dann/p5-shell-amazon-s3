@@ -1,9 +1,9 @@
 package Shell::Amazon::S3::ConfigLoader;
+use Moose;
 use YAML;
 use File::HomeDir;
 use Path::Class qw(file);
 use ExtUtils::MakeMaker ();
-use MooseX::Singleton;
 
 has 'changed' => (
     is      => 'rw',
